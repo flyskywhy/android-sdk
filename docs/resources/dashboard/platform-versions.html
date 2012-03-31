@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Platform Versions | Android Developers</title>
+<link href="../../assets/android-developer-docs-devguide.css" rel="stylesheet" type="text/css" />
+<script src="../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../assets/android-developer-docs.js" type="text/javascript"></script>
+<script src="../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../");
+</script>
+<script src="../../resources/resources-data.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+<body class="gc-documentation">
+
+  <div id="header">
+      <div id="headerLeft">
+          <a href="../../index.html" tabindex="-1"><img
+              src="../../assets/images/bg_logo.png" alt="Android Developers" /></a>
+          <ul id="header-tabs" class="resources">
+    
+	<li id="home-link"><a href="../../offline.html">
+	
+		<span class="en">Home</span>
+		<span style="display:none" class="de">Startseite</span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+		<span style="display:none" class="ja">ホーム</span>
+		<span style="display:none" class="zh-CN">主页</span>
+		<span style="display:none" class="zh-TW">首頁</span>
+	
+	</a></li>
+	<li id="sdk-link"><a href="../../sdk/index.html">
+		<span class="en">SDK</span>
+	</a></li>
+	<li id="guide-link"><a href="../../guide/index.html" onClick="return loadLast('guide')">
+	
+		<span class="en">Dev Guide</span>
+		<span style="display:none" class="de">Handbuch</span>
+		<span style="display:none" class="es">Guía</span>
+		<span style="display:none" class="fr">Guide</span>
+		<span style="display:none" class="it">Guida</span>
+		<span style="display:none" class="ja">開発ガイド</span>
+		<span style="display:none" class="zh-CN">开发人员指南</span>
+		<span style="display:none" class="zh-TW">開發指南</span>
+	
+	</a></li>
+	<li id="reference-link"><a href="../../reference/packages.html" onClick="return loadLast('reference')">
+	
+		<span class="en">Reference</span>
+		<span style="display:none" class="de">Referenz</span>
+		<span style="display:none" class="es">Referencia</span>
+		<span style="display:none" class="fr">Référence</span>
+		<span style="display:none" class="it">Riferimento</span>
+		<span style="display:none" class="ja">リファレンス</span>
+		<span style="display:none" class="zh-CN">参考</span>
+		<span style="display:none" class="zh-TW">參考資料</span>
+	
+	</a></li>
+	<li id="resources-link"><a href="../../resources/index.html" onClick="return loadLast('resources')">
+	
+		<span class="en">Resources</span>
+		<span style="display:none" class="de"></span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+    		<span style="display:none" class="ja"></span>
+		<span style="display:none" class="zh-CN"></span>
+		<span style="display:none" class="zh-TW"></span>
+	
+	</a></li>
+	<li id="videos-link"><a href="../../videos/index.html" onClick="return loadLast('videos')">
+	
+		<span class="en">Videos</span>
+		<span style="display:none" class="de"></span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+		<span style="display:none" class="ja">ビデオ</span>
+		<span style="display:none" class="zh-CN"></span>
+		<span style="display:none" class="zh-TW"></span>
+	
+	</a></li>
+	<li><a href="http://android-developers.blogspot.com" onClick="return requestAppendHL(this.href)">
+	
+		<span class="en">Blog</span>
+		<span style="display:none" class="de"></span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+		<span style="display:none" class="ja">ブログ</span>
+		<span style="display:none" class="zh-CN">博客</span>
+		<span style="display:none" class="zh-TW">網誌</span>
+	
+	</a></li>
+
+
+     
+</ul>
+     
+      </div>
+      <div id="headerRight">
+          <div id="headerLinks">
+          
+          <a href="http://www.android.com">Android.com</a>
+          </div>
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../')"
+                      onkeyup="return search_changed(event, false, '../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      </div><!-- headerRight -->
+      <script type="text/javascript">
+        <!--  
+        changeTabLang(getLangPref());
+        //-->
+      </script>
+  </div><!-- header -->
+
+  <div class="g-section g-tpl-200" id="body-content">
+    <div class="g-unit g-first" id="side-nav">
+      <div id="devdoc-nav"><ul>
+  <li>
+    <h2><span class="en">Technical Resources</span>
+    </h2>
+    <ul>
+      <li class="toggle-list">
+        <div><a href="../../resources/browser.html?tag=sample">
+            <span class="en">Sample Code</span>
+            <span class="de" style="display:none">Beispielcode</span>
+            <span class="es" style="display:none">Código de ejemplo</span>
+            <span class="fr" style="display:none">Exemple de code</span>
+            <span class="it" style="display:none">Codice di esempio</span>
+            <span class="ja" style="display:none">サンプル コード</span>
+            <span class="zh-CN" style="display:none"></span>
+            <span class="zh-TW" style="display:none"></span>
+          </a></div>
+        <ul id="devdoc-nav-sample-list">
+          <li><a href="../../resources/samples/get.html">
+                <span class="en">Getting the Samples</span>
+              </a></li>
+        </ul>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../resources/browser.html?tag=article">
+               <span class="en">Articles</span>
+             </a></div>
+        <ul id="devdoc-nav-article-list">
+        </ul>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../resources/browser.html?tag=tutorial">
+               <span class="en">Tutorials</span>
+               <span class="de" style="display:none">Lernprogramme</span>
+               <span class="es" style="display:none">Tutoriales</span>
+               <span class="fr" style="display:none">Didacticiels</span>
+               <span class="it" style="display:none">Esercitazioni</span>
+               <span class="ja" style="display:none">チュートリアル</span>
+               <span class="zh-CN" style="display:none"></span>
+               <span class="zh-TW" style="display:none"></span>
+             </a></div>
+        <ul id="devdoc-nav-tutorial-list">
+        </ul>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../resources/topics.html">
+               <span class="en">Topics</span>
+             </a></div>
+        <ul id="devdoc-nav-topic-list">
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2><span class="en">Community</span>
+               <span style="display:none" class="de"></span>
+               <span style="display:none" class="es">Comunidad</span>
+               <span style="display:none" class="fr">Communauté</span>
+               <span style="display:none" class="it"></span>
+               <span style="display:none" class="ja">コミュニティ</span>
+               <span style="display:none" class="zh-CN">社区</span>
+               <span style="display:none" class="zh-TW">社群</span>
+    </h2>
+    <ul>
+      <li><a href="../../resources/community-groups.html">
+            <span class="en">Developer Forums</span>
+          </a></li>
+      <li><a href="../../resources/community-more.html">
+            <span class="en">IRC, Twitter</span>
+          </a></li>
+    </ul>
+  </li>
+
+
+  <li>
+   <h2><span class="en">More</span></h2>
+    <ul>
+      <li><a href="../../resources/faq/commontasks.html">
+            <span class="en">Common Tasks </span>
+          </a></li>
+      <li><a href="../../resources/faq/troubleshooting.html">
+            <span class="en">Troubleshooting Tips</span>
+          </a></li>
+      <li class="toggle-list">
+        <div><a href="../../resources/faq/index.html">
+               <span class="en">FAQs</span>
+             </a></div>
+        <ul>
+        <li><a href="../../resources/faq/framework.html">
+                <span class="en">App Framework FAQ</span>
+                </a></li>
+        <li><a href="../../resources/faq/licensingandoss.html">
+                <span class="en">Licensing FAQ</span>
+                </a></li>
+        <li><a href="../../resources/faq/security.html">
+                <span class="en">Security FAQ</span>
+                </a></li>
+        </ul>
+     </li>
+    </ul>
+  </li>
+</ul>
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      addLoadEvent(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="g-unit" id="doc-content"><a name="top"></a>
+
+<div id="jd-header" class="guide-header">
+  <span class="crumb">
+    &nbsp;
+    
+  </span>
+<h1>Platform Versions</h1>
+</div>
+
+  
+  <div id="jd-content">
+ 
+    
+
+
+    <div class="jd-descr">
+    <style type="text/css">
+
+div.dashboard-panel {
+  max-width:1000px;
+  margin:0 0 2em 0;
+  padding:20px 20px 0 20px;
+  border:1px solid #d3ecf5;
+  border-radius:7px;
+  -moz-border-radius:7px;
+  -webkit-border-radius:7px;
+  background-color: #DAF3FC;
+  box-shadow:2px 3px 1px #eee;
+  -moz-box-shadow:2px 3px 1px #eee;
+  -webkit-box-shadow:2px 3px 1px #eee;
+  overflow:hidden;
+}
+#jd-content div.dashboard-panel img {
+  margin:0 20px 20px 0;
+  padding:0;
+  border:1px solid #ccc;
+  float:left;
+}
+#jd-content div.dashboard-panel table {
+  margin:0 0 20px 0;
+  float:left;
+  background-color:#fff;
+}
+div.dashboard-panel p {
+  clear:left;
+}
+div.dashboard-panel th {
+  white-space:nowrap;
+}
+</style>
+
+<p>This page provides data about the relative number of active devices
+running a given version of the Android platform. This can help you
+understand the landscape of device distribution and decide how to prioritize
+the development of your application features for the devices currently in
+the hands of users. For information about how to target your application to devices based on
+platform version, see <a href="../../guide/appendix/api-levels.html">API Levels</a>.</p>
+
+
+<h3 id="Current">Current Distribution</h3>
+
+<p>The following pie chart and table is based on the number of Android devices that have accessed
+Android Market within a 14-day period ending on the data collection date noted below.</p>
+
+<div class="dashboard-panel">
+
+<img alt="" height="250" width="470"
+src="http://chart.apis.google.com/chart?&cht=p&chs=460x250&chd=t:0.8,1.3,9.6,35.3,0.5,50.1,0.1,1.1,1.2&chl=Android%201.5|Android%201.6|Android%202.1|Android%202.2|Android%202.3|Android%202.3.3|Android%203.0|Android%203.1|Android%203.2&chco=c4df9b,6fad0c" />
+
+<table>
+<tr>
+  <th>Platform</th>
+  <th>Codename</th>
+  <th>API Level</th>
+  <th>Distribution</th>
+</tr>
+<tr><td><a href="../../sdk/android-1.5.html">Android 1.5</a></td><td>Cupcake</td>  <td>3</td><td>0.8%</td></tr>
+<tr><td><a href="../../sdk/android-1.6.html">Android 1.6</a></td><td>Donut</td>    <td>4</td><td>1.3%</td></tr>
+<tr><td><a href="../../sdk/android-2.1.html">Android 2.1</a></td><td>Eclair</td>   <td>7</td><td>9.6%</td></tr>
+<tr><td><a href="../../sdk/android-2.2.html">Android 2.2</a></td><td>Froyo</td>    <td>8</td><td>35.3%</td></tr>
+<tr><td><a href="../../sdk/android-2.3.html">Android 2.3 -<br/>
+                             Android 2.3.2</a></td><td rowspan="2">Gingerbread</td>    <td>9</td><td>0.5%</td></tr>
+<tr><td><a href="../../sdk/android-2.3.3.html">Android 2.3.3 -<br/>
+      Android 2.3.7</a></td><!-- Gingerbread -->                                       <td>10</td><td>50.1%</td></tr>
+<tr><td><a href="../../sdk/android-3.0.html">Android 3.0</a></td>
+                                                   <td rowspan="3">Honeycomb</td>      <td>11</td><td>0.1%</td></tr>
+<tr><td><a href="../../sdk/android-3.1.html">Android 3.1</a></td><!-- Honeycomb --><td>12</td><td>1.1%</td></tr>
+<tr><td><a href="../../sdk/android-3.2.html">Android 3.2</a></td><!-- Honeycomb --><td>13</td><td>1.2%</td></tr> 
+</table>
+
+<p><em>Data collected during a 14-day period ending on December 1, 2011</em></p>
+<!--
+<p style="font-size:.9em">* <em>Other: 0.1% of devices running obsolete versions</em></p>
+-->
+</div><!-- end dashboard-panel -->
+
+
+<h3 id="Historical">Historical Distribution</h3>
+
+<p>The following stacked line graph provides a history of the relative number of
+active Android devices running different versions of the Android platform. It also provides a
+valuable perspective of how many devices your application is compatible with, based on the
+platform version.</p>
+
+<p>Notice that the platform versions are stacked on top of each other with the oldest active
+version at the top. This format indicates the total percent of active devices that are compatible
+with a given version of Android. For example, if you develop your application for
+the version that is at the very top of the chart, then your application is
+compatible with 100% of active devices (and all future versions), because all Android APIs are
+forward compatible. Or, if you develop your application for a version lower on the chart,
+then it is currently compatible with the percentage of devices indicated on the y-axis, where the
+line for that version meets the y-axis on the right.</p>
+
+<p>Each dataset in the timeline is based on the number of Android devices that accessed
+Android Market within a 14-day period ending on the date indicated on the x-axis.</p>
+
+<div class="dashboard-panel">
+
+<img alt="" height="250" width="660" style="padding:5px;background:#fff"
+src="http://chart.apis.google.com/chart?&cht=lc&chs=660x250&chxt=x,x,y,r&chxr=0,0,12|1,0,12|2,0,100|3,0,100&chxl=0%3A|06/01|06/15|07/01|07/15|08/01|08/15|09/01|09/15|10/01|10/15|11/01|11/15|12/01|1%3A|2011||||||||||||2011|2%3A|0%25|25%25|50%25|75%25|100%25|3%3A|0%25|25%25|50%25|75%25|100%25&chxp=0,0,1,2,3,4,5,6,7,8,9,10,11,12&chxtc=0,5&chd=t:99.4,99.3,99.2,99.0,98.8,98.7,98.5,98.5,98.2,98.1,98.0,99.9,99.9|97.5,97.5,97.7,97.6,97.5,97.5,97.5,97.5,97.1,97.1,97.0,99.1,99.1|95.0,95.2,95.5,95.5,95.5,95.6,95.7,95.8,95.6,95.9,95.7,97.7,97.8|73.9,75.4,77.6,79.0,80.2,81.1,82.4,83.3,83.8,84.9,85.1,87.5,88.2|9.5,13.6,17.8,20.6,24.3,27.5,31.2,34.7,38.3,41.3,44.0,48.9,52.9|8.4,12.6,16.8,20.0,23.7,26.9,30.6,34.1,37.8,40.8,43.5,48.4,52.4|0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,2.3|0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.2&chm=b,c3df9b,0,1,0|b,b8dc82,1,2,0|tAndroid%202.1,608920,2,0,15,,t::-5|b,addb67,2,3,0|tAndroid%202.2,517617,3,0,15,,t::-5|b,a3db4b,3,4,0|b,98dc2e,4,5,0|tAndroid%202.3.3,334d0a,5,1,15,,t::-5|b,8cd41b,5,6,0|b,7ec113,6,7,0|B,6fad0c,7,8,0&chg=7,25&chdl=Android%201.5|Android%201.6|Android%202.1|Android%202.2|Android%202.3|Android%202.3.3|Android%203.1|Android%203.2&chco=add274,a2d15a,97d13e,8bcb28,7dba1e,6ea715,5f920e,507d08" />
+
+<p><em>Last historical dataset collected during a 14-day period ending on December 1, 2011</em></p>
+
+
+</div><!-- end dashboard-panel -->
+
+
+    </div>
+
+    
+    
+    <a href="#top" style="float:right">&uarr; Go to top</a>
+    
+
+  </div> <!-- end jd-content -->
+
+<div id="footer">
+
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="http://www.android.com/terms.html">Site Terms of Service</a> -
+    <a href="http://www.android.com/privacy.html">Privacy Policy</a> -
+    <a href="http://www.android.com/branding.html">Brand Guidelines</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize android-developer-docs.js */
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5831155-1");
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Content Providers | Android Developers</title>
+<link href="../../../assets/android-developer-docs-devguide.css" rel="stylesheet" type="text/css" />
+<script src="../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../assets/android-developer-docs.js" type="text/javascript"></script>
+<script src="../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../");
+</script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+<body class="gc-documentation">
+
+  <div id="header">
+      <div id="headerLeft">
+          <a href="../../../index.html" tabindex="-1"><img
+              src="../../../assets/images/bg_logo.png" alt="Android Developers" /></a>
+          <ul id="header-tabs" class="guide">
+    
+	<li id="home-link"><a href="../../../offline.html">
+	
+		<span class="en">Home</span>
+		<span style="display:none" class="de">Startseite</span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+		<span style="display:none" class="ja">ホーム</span>
+		<span style="display:none" class="zh-CN">主页</span>
+		<span style="display:none" class="zh-TW">首頁</span>
+	
+	</a></li>
+	<li id="sdk-link"><a href="../../../sdk/index.html">
+		<span class="en">SDK</span>
+	</a></li>
+	<li id="guide-link"><a href="../../../guide/index.html" onClick="return loadLast('guide')">
+	
+		<span class="en">Dev Guide</span>
+		<span style="display:none" class="de">Handbuch</span>
+		<span style="display:none" class="es">Guía</span>
+		<span style="display:none" class="fr">Guide</span>
+		<span style="display:none" class="it">Guida</span>
+		<span style="display:none" class="ja">開発ガイド</span>
+		<span style="display:none" class="zh-CN">开发人员指南</span>
+		<span style="display:none" class="zh-TW">開發指南</span>
+	
+	</a></li>
+	<li id="reference-link"><a href="../../../reference/packages.html" onClick="return loadLast('reference')">
+	
+		<span class="en">Reference</span>
+		<span style="display:none" class="de">Referenz</span>
+		<span style="display:none" class="es">Referencia</span>
+		<span style="display:none" class="fr">Référence</span>
+		<span style="display:none" class="it">Riferimento</span>
+		<span style="display:none" class="ja">リファレンス</span>
+		<span style="display:none" class="zh-CN">参考</span>
+		<span style="display:none" class="zh-TW">參考資料</span>
+	
+	</a></li>
+	<li id="resources-link"><a href="../../../resources/index.html" onClick="return loadLast('resources')">
+	
+		<span class="en">Resources</span>
+		<span style="display:none" class="de"></span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+    		<span style="display:none" class="ja"></span>
+		<span style="display:none" class="zh-CN"></span>
+		<span style="display:none" class="zh-TW"></span>
+	
+	</a></li>
+	<li id="videos-link"><a href="../../../videos/index.html" onClick="return loadLast('videos')">
+	
+		<span class="en">Videos</span>
+		<span style="display:none" class="de"></span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+		<span style="display:none" class="ja">ビデオ</span>
+		<span style="display:none" class="zh-CN"></span>
+		<span style="display:none" class="zh-TW"></span>
+	
+	</a></li>
+	<li><a href="http://android-developers.blogspot.com" onClick="return requestAppendHL(this.href)">
+	
+		<span class="en">Blog</span>
+		<span style="display:none" class="de"></span>
+		<span style="display:none" class="es"></span>
+		<span style="display:none" class="fr"></span>
+		<span style="display:none" class="it"></span>
+		<span style="display:none" class="ja">ブログ</span>
+		<span style="display:none" class="zh-CN">博客</span>
+		<span style="display:none" class="zh-TW">網誌</span>
+	
+	</a></li>
+
+
+     
+</ul>
+     
+      </div>
+      <div id="headerRight">
+          <div id="headerLinks">
+          
+          <a href="http://www.android.com">Android.com</a>
+          </div>
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../')"
+                      onkeyup="return search_changed(event, false, '../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      </div><!-- headerRight -->
+      <script type="text/javascript">
+        <!--  
+        changeTabLang(getLangPref());
+        //-->
+      </script>
+  </div><!-- header -->
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first" id="side-nav">
+      <div id="devdoc-nav">
+<ul>
+
+  <li>
+    <h2><span class="en">Android Basics</span>
+        <span class="de" style="display:none">Einführung in Android</span>
+        <span class="es" style="display:none">Información básica sobre Android</span>
+        <span class="fr" style="display:none">Présentation d'Android</span>
+        <span class="it" style="display:none">Nozioni di base su Android</span>
+        <span class="ja" style="display:none">Android の基本</span>
+        <span class="zh-CN" style="display:none">Android 基础知识</span>
+        <span class="zh-TW" style="display:none">Android 簡介</span>
+    </h2>
+    <ul>
+      <li><a href="../../../guide/basics/what-is-android.html">
+        <span class="en">What Is Android?</span>
+        <span class="de" style="display:none">Was ist Android?</span>
+        <span class="es" style="display:none">¿Qué es Android?</span>
+        <span class="fr" style="display:none">Qu'est-ce qu'Android&nbsp;?</span>
+        <span class="it" style="display:none">Che cos'è Android?</span>
+        <span class="ja" style="display:none">Android とは</span>
+        <span class="zh-CN" style="display:none">Android 是什么？</span>
+        <span class="zh-TW" style="display:none">什麼是 Android？</span>
+          </a></li>
+      <li><a href="../../../guide/topics/fundamentals.html">
+        <span class="en">Application Fundamentals</span>
+        <span class="de" style="display:none">Anwendungsgrundlagen</span>
+        <span class="es" style="display:none">Fundamentos de las aplicaciones</span>
+        <span class="fr" style="display:none">Principes de base des applications</span>
+        <span class="it" style="display:none">Concetti fondamentali sulle applicazioni</span>
+        <span class="ja" style="display:none">開発の基礎</span>
+        <span class="zh-CN" style="display:none">应用程序基础</span>
+        <span class="zh-TW" style="display:none">應用程式基本原理</span>
+      </a></li>
+
+  <!--  <li><a style="color:gray;">The Android SDK</a></li> -->
+  <!--  <li><a style="color:gray;">Walkthrough for Developers</a></li> -->
+      <!-- quick overview of what it's like to develop on Android -->
+    </ul>
+  </li>
+
+  <li>
+    <h2>
+      <span class="en">Framework Topics</span>
+      <span class="de" style="display:none">Framework-Themen</span>
+      <span class="es" style="display:none">Temas sobre el framework</span>
+      <span class="fr" style="display:none">Thèmes relatifs au framework</span>
+      <span class="it" style="display:none">Argomenti relativi al framework</span>
+      <span class="ja" style="display:none">フレームワーク トピック</span>
+      <span class="zh-CN" style="display:none">框架主题</span>
+      <span class="zh-TW" style="display:none">架構主題</span>
+    </h2>
+    <ul>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/fundamentals/activities.html">
+          <span class="en">Activities</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/fundamentals/fragments.html">
+            <span class="en">Fragments</span>
+          </a></li>
+          <li><a href="../../../guide/topics/fundamentals/loaders.html">
+            <span class="en">Loaders</span>
+          </a></li>
+          <li><a href="../../../guide/topics/fundamentals/tasks-and-back-stack.html">
+            <span class="en">Tasks and Back Stack</span></a></li>
+        </ul>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/fundamentals/services.html">
+          <span class="en">Services</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/fundamentals/bound-services.html">
+            <span class="en">Bound Services</span>
+          </a></li>
+        </ul>
+      </li>
+      <li class="toggle-list">
+          <div><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a><span class="new">updated</span></div>
+          <ul>
+            <li><a href="../../../guide/topics/providers/calendar-provider.html">
+                  <span class="en">Calendar Provider</span></a>
+                  <span class="new">new!</span>
+                </li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/intents/intents-filters.html">
+            <span class="en">Intents and Intent Filters</span>
+          </a></li>
+      <li><a href="../../../guide/topics/fundamentals/processes-and-threads.html">
+            <span class="en">Processes and Threads</span>
+          </a></li>
+    </ul>
+
+
+    <ul>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/ui/index.html">
+            <span class="en">User Interface</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/declaring-layout.html">
+               <span class="en">XML Layouts</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/ui-events.html">
+                <span class="en">Input Events</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/menus.html">
+               <span class="en">Menus</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/actionbar.html">
+               <span class="en">Action Bar</span>
+              </a> <span class="new">updated</span></li>
+          <li><a href="../../../guide/topics/ui/dialogs.html">
+                <span class="en">Dialogs</span>
+              </a></li>
+          <li class="toggle-list">
+            <div><a href="../../../guide/topics/ui/notifiers/index.html">
+                <span class="en">Notifications</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+                <span class="en">Toast Notifications</span>
+              </a></li>
+              <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+                <span class="en">Status Bar Notifications</span>
+              </a></li>
+            </ul>
+          </li>
+          <li><a href="../../../guide/topics/ui/drag-drop.html">
+                <span class="en">Drag and Drop</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/themes.html">
+                <span class="en">Styles and Themes</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/custom-components.html">
+                <span class="en">Custom Components</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/binding.html">
+                <span class="en">Binding to Data with AdapterView</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/layout-objects.html">
+                <span class="en">Common Layout Objects</span>
+              </a></li>
+          <li><a href="../../../guide/topics/ui/how-android-draws.html">
+                <span class="en">How Android Draws Views</span>
+              </a></li>
+        </ul>
+      </li><!-- end of User Interface -->
+
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/resources/index.html">
+               <span class="en">Application Resources</span>
+             </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+                <span class="en">Providing Resources</span>
+              </a></li>
+          <li><a href="../../../guide/topics/resources/accessing-resources.html">
+                <span class="en">Accessing Resources</span>
+              </a></li>
+          <li><a href="../../../guide/topics/resources/runtime-changes.html">
+                <span class="en">Handling Runtime Changes</span>
+              </a></li>
+          <li><a href="../../../guide/topics/resources/localization.html">
+                <span class="en">Localization</span>
+              </a></li>
+          <li class="toggle-list">
+            <div><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+              <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+              <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+              <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+              <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+              <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+              <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+              <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+            </ul>
+          </li><!-- end of resource types -->
+        </ul>
+      </li><!-- end of app resources -->
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Data Storage</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/data/backup.html">
+                <span class="en">Data Backup</span>
+              </a>
+            </li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/security/security.html">
+            <span class="en">Security and Permissions</span>
+          </a></li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">The AndroidManifest.xml File</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+      </li><!-- end of the manifest file -->
+    </ul>
+
+    <ul>
+    <li class="toggle-list">
+        <div><a href="../../../guide/topics/graphics/index.html">
+            <span class="en">Graphics</span>
+          </a><span class="new-child">new!</span></div>
+        <ul>
+          <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+              <span class="en">Canvas and Drawables</span></a></li>
+          <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+              <span class="en">Hardware Acceleration</span></a>
+            <span class="new">new!</span></li>
+          <li><a href="../../../guide/topics/graphics/opengl.html">
+              <span class="en">OpenGL</span>
+            </a><span class="new">updated</span></li>
+        </ul>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/graphics/animation.html">
+            <span class="en">Animation</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/graphics/prop-animation.html">
+              <span class="en">Property Animation</span></a></li>
+          <li><a href="../../../guide/topics/graphics/view-animation.html">
+              <span class="en">View Animation</span></a></li>
+          <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+              <span class="en">Drawable Animation</span></a></li>
+        </ul>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/renderscript/index.html">
+          <span class="en">RenderScript</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/renderscript/graphics.html">
+                <span class="en">Graphics</span>
+              </a>
+          </li>
+          <li><a href="../../../guide/topics/renderscript/compute.html">
+                <span class="en">Compute</span>
+              </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="toggle-list">
+          <div><a href="../../../guide/topics/media/index.html">
+            <span class="en">Multimedia and Camera</span>
+          </a><span class="new">updated</span></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                  <span class="new">new!</span>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+          </ul>
+      </li>
+      <li>
+        <a href="../../../guide/topics/clipboard/copy-paste.html">
+            <span class="en">Copy and Paste</span>
+        </a></li>
+  <!--<li class="toggle-list">
+        <div><a style="color:gray;">Sensors</a></div>
+          <ul>
+            <li><a style="color:gray;">Camera</a></li>
+            <li><a style="color:gray;">Compass</a></li>
+            <li><a style="color:gray;">Accelerometer</a></li>
+          </ul>
+      </li> -->
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/obtaining-user-location.html">
+                <span class="en">Obtaining User Location</span>
+              </a></li>
+        </ul>
+      </li>
+  <!--<li class="toggle-list">
+        <div><a style="color:gray;">Wireless Controls</a></div>
+          <ul>
+            <li><a style="color:gray;">Wi-Fi</a></li>
+          </ul>
+      </li> -->
+  <!--<li><a style="color:gray;">Localization</a></li>  -->
+      <li><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span></a>
+          </li>
+      <li><a href="../../../guide/topics/wireless/bluetooth.html">
+            <span class="en">Bluetooth</span></a>
+          </li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/nfc/index.html">
+          <span class="en">Near Field Communication</span></a> <span class="new">updated</span>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/nfc/advanced-nfc.html">Advanced NFC</a></li>
+        </ul>
+      </li>
+      <li class="toggle-list">
+          <div><a href="../../../guide/topics/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/usb/host.html">Host</a></li>
+              <li><a href="../../../guide/topics/usb/adk.html">Open Accessory Dev Kit</a></li>
+            </ul>
+          </li>
+
+       <li><a href="../../../guide/topics/network/sip.html">
+            <span class="en">Session Initiation Protocol</span>
+          </a></li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/admin/device-admin.html">
+            <span class="en">Device Administration</span></a>
+      </li>
+      <li class="toggle-list">
+           <div>
+                <a href="../../../guide/topics/testing/index.html">
+                   <span class="en">Testing</span>
+               </a>
+           </div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/testing/testing_android.html">
+                <span class="en">Testing Fundamentals</span></a>
+              </li>
+              <li>
+                <a href="../../../guide/topics/testing/activity_testing.html">
+                <span class="en">Activity Testing</span></a>
+              </li>
+              <li>
+                <a href="../../../guide/topics/testing/contentprovider_testing.html">
+                <span class="en">Content Provider Testing</span></a>
+              </li>
+              <li>
+                <a href="../../../guide/topics/testing/service_testing.html">
+                <span class="en">Service Testing</span></a>
+              </li>
+              <li>
+                <a href="../../../guide/topics/testing/what_to_test.html">
+                <span class="en">What To Test</span></a>
+              </li>
+           </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <h2>
+      <span class="en">Android Market Topics</span>
+    </h2>
+    <ul>
+      <li><a href="../../../guide/publishing/publishing.html">
+          <span class="en">Publishing on Android Market</span>
+          </a></li>
+      <li><a href="../../../guide/publishing/licensing.html">
+          <span class="en">Application Licensing</span></a>
+      </li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/market/billing/index.html">
+            <span class="en">In-app Billing</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/market/billing/billing_overview.html">
+              <span class="en">In-app Billing Overview</span></a>
+          </li>
+          <li><a href="../../../guide/market/billing/billing_integrate.html">
+              <span class="en">Implementing In-app Billing</span></a>
+          </li>
+          <li><a href="../../../guide/market/billing/billing_best_practices.html">
+              <span class="en">Security and Design</span></a>
+          </li>
+          <li><a href="../../../guide/market/billing/billing_testing.html">
+              <span class="en">Testing In-app Billing</span></a>
+          </li>
+          <li><a href="../../../guide/market/billing/billing_admin.html">
+              <span class="en">Administering In-app Billing</span></a>
+          </li>
+          <li><a href="../../../guide/market/billing/billing_reference.html">
+              <span class="en">In-app Billing Reference</span></a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/appendix/market-filters.html">
+          <span class="en">Market Filters</span></a>
+      </li>
+      <li><a href="../../../guide/market/publishing/multiple-apks.html">
+          <span class="en">Multiple APK Support</span></a>
+      </li>
+    </ul>
+  </li>
+
+
+  <li>
+    <h2><span class="en">Developing</span>
+               <span class="de" style="display:none">Entwicklung</span>
+               <span class="es" style="display:none">Desarrollo</span>
+               <span class="fr" style="display:none">Développement</span>
+               <span class="it" style="display:none">Sviluppo</span>
+               <span class="ja" style="display:none">開発</span>
+               <span class="zh-CN" style="display:none">开发</span>
+               <span class="zh-TW" style="display:none">開發</span>
+    </h2>
+    <ul>
+  <!--<li><a href="">Developing for Android</a></li>
+      signing, upgrading, selecting a package name, select device profile, touch, trackball, dpad available, etc. -->
+      <li>
+        <a href="../../../guide/developing/index.html">
+        <span class="en">Introduction</span></a>
+      </li>
+
+      <li class="toggle-list">
+        <div>
+           <a href="../../../guide/developing/devices/index.html">
+                <span class="en">Managing Virtual Devices</span>
+            </a>
+        </div>
+        <ul>
+          <li>
+            <a href="../../../guide/developing/devices/managing-avds.html">
+              <span class="en">With AVD Manager</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/devices/managing-avds-cmdline.html">
+              <span class="en">From the Command Line</span>
+            </a>
+          </li>
+          <li>
+           <a href="../../../guide/developing/devices/emulator.html">
+                <span class="en">Using the Android Emulator</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="../../../guide/developing/device.html">
+          <span class="en">Using Hardware Devices</span>
+        </a>
+      </li>
+
+      <li class="toggle-list">
+        <div>
+          <a href="../../../guide/developing/projects/index.html">
+            <span class="en">Managing Projects</span>
+          </a>
+        </div>
+        <ul>
+          <li>
+            <a href="../../../guide/developing/projects/projects-eclipse.html">
+              <span class="en">From Eclipse with ADT</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/projects/projects-cmdline.html">
+                <span class="en">From the Command Line</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="toggle-list">
+        <div>
+          <a href="../../../guide/developing/building/index.html">
+            <span class="en">Building and Running</span>
+          </a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/developing/building/building-eclipse.html">
+            <span class="en">From Eclipse with ADT</span>
+          </a></li>
+          <li><a href="../../../guide/developing/building/building-cmdline.html">
+            <span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+      <li class="toggle-list">
+        <div>
+          <a href="../../../guide/developing/debugging/index.html">
+            <span class="en">Debugging</span>
+          </a>
+        </div>
+        <ul>
+          <li>
+            <a href="../../../guide/developing/debugging/debugging-projects.html">
+                <span class="en">From Eclipse with ADT</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/debugging/debugging-projects-cmdline.html">
+                <span class="en">From Other IDEs</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/debugging/ddms.html">
+              <span class="en">Using DDMS</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/debugging/debugging-log.html">
+                <span class="en">Reading and Writing Logs</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/debugging/debugging-ui.html">
+                <span class="en">Debugging and Profiling UIs</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/debugging/debugging-tracing.html">
+                <span class="en">Profiling with Traceview and dmtracedump</span>
+            </a>
+          </li>
+          <li>
+            <a href="../../../guide/developing/debugging/debugging-devtools.html">
+                <span class="en">Using the Dev Tools App</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="toggle-list">
+           <div>
+                <a href="../../../guide/developing/testing/index.html">
+                   <span class="en">Testing</span>
+               </a>
+           </div>
+           <ul>
+              <li>
+                <a href="../../../guide/developing/testing/testing_eclipse.html">
+                  <span class="en">From Eclipse with ADT</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="../../../guide/developing/testing/testing_otheride.html">
+                  <span class="en">From Other IDEs</span>
+                </a>
+              </li>
+           </ul>
+         </li>
+
+         <li class="toggle-list">
+        <div><a href="../../../guide/developing/tools/index.html">
+            <span class="en">Tools</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/developing/tools/adb.html">adb</a></li>
+          <li><a href="../../../guide/developing/tools/adt.html">ADT</a></li>
+          <li><a href="../../../guide/developing/tools/android.html">android</a></li>
+          <li><a href="../../../guide/developing/tools/bmgr.html">bmgr</a>
+          <li><a href="../../../guide/developing/tools/dmtracedump.html">dmtracedump</a></li>
+          <li><a href="../../../guide/developing/tools/draw9patch.html">Draw
+          9-Patch</a></li>
+          <li><a href="../../../guide/developing/tools/emulator.html">Emulator</a></li>
+          <li><a href="../../../guide/developing/tools/etc1tool.html">etc1tool</a></li>
+          <li><a href="../../../guide/developing/tools/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+          <li><a href="../../../guide/developing/tools/hprof-conv.html">hprof-conv</a></li>
+          <li><a href="../../../guide/developing/tools/layoutopt.html">layoutopt</a></li>
+          <li><a href="../../../guide/developing/tools/logcat.html">logcat</a></li>
+          <li><a href="../../../guide/developing/tools/mksdcard.html">mksdcard</a></li>
+          <li><a href="../../../guide/developing/tools/monkey.html">Monkey</a></li>
+          <li class="toggle-list">
+            <div><a href="../../../guide/developing/tools/monkeyrunner_concepts.html">
+              <span class="en">monkeyrunner</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/developing/tools/MonkeyDevice.html">
+                <span class="en">MonkeyDevice</span>
+                </a></li>
+              <li><a href="../../../guide/developing/tools/MonkeyImage.html">
+                <span class="en">MonkeyImage</span>
+                </a></li>
+              <li><a href="../../../guide/developing/tools/MonkeyRunner.html">
+                <span class="en">MonkeyRunner</span>
+                </a></li>
+            </ul>
+          </li>
+          <li><a href="../../../guide/developing/tools/proguard.html">ProGuard</a></li>
+          <li><a href="../../../guide/developing/tools/adb.html#sqlite">sqlite3</a></li>
+          <li><a href="../../../guide/developing/tools/traceview.html">Traceview</a></li>
+          <li><a href="../../../guide/developing/tools/zipalign.html">zipalign</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    <h2><span class="en">Publishing</span>
+        <span class="de" style="display:none">Veröffentlichung</span>
+        <span class="es" style="display:none">Publicación</span>
+        <span class="fr" style="display:none">Publication</span>
+        <span class="it" style="display:none">Pubblicazione</span>
+        <span class="ja" style="display:none">公開</span>
+        <span class="zh-CN" style="display:none">发布</span>
+        <span class="zh-TW" style="display:none">發佈</span>
+    </h2>
+    <ul>
+      <li><a href="../../../guide/publishing/publishing_overview.html">
+            <span class="en">Publishing Overview</span>
+          </a><span class="new">new!</span></li>
+      <li><a href="../../../guide/publishing/preparing.html">
+            <span class="en">Preparing for Release</span>
+            <span class="de" style="display:none">Vorbereitung auf die Veröffentlichung</span>
+            <span class="es" style="display:none">Publicación de aplicaciones</span>
+            <span class="fr" style="display:none">Préparation à la publication</span>
+            <span class="it" style="display:none">Preparativi per la pubblicazione</span>
+            <span class="ja" style="display:none">公開の準備</span>
+            <span class="zh-CN" style="display:none">准备发布</span>
+            <span class="zh-TW" style="display:none">準備發佈</span>
+          </a><span class="new">updated</span></li>
+      <li><a href="../../../guide/publishing/app-signing.html">
+            <span class="en">Signing Your Applications</span>
+            <span class="de" style="display:none">Signieren Ihrer Anwendungen</span>
+            <span class="es" style="display:none">Firma de aplicaciones</span>
+            <span class="fr" style="display:none">Attribution de votre signature <br />à vos
+applications</span>
+            <span class="it" style="display:none">Firma delle applicazioni</span>
+            <span class="ja" style="display:none">アプリケーションへの署名</span>
+            <span class="zh-CN" style="display:none">应用程序签名</span>
+            <span class="zh-TW" style="display:none">簽署應用程式</span>
+          </a></li>
+      <li><a href="../../../guide/publishing/versioning.html">
+            <span class="en">Versioning Your Applications</span>
+            <span class="de" style="display:none">Versionsverwaltung für Ihre <br
+/>Anwendungen</span>
+            <span class="es" style="display:none">Versiones de las aplicaciones</span>
+            <span class="fr" style="display:none">Attribution d'une version à vos
+applications</span>
+            <span class="it" style="display:none">Controllo versioni delle applicazioni</span>
+            <span class="ja" style="display:none">アプリケーションのバージョニング</span>
+            <span class="zh-CN" style="display:none">应用程序版本控制</span>
+            <span class="zh-TW" style="display:none">應用程式版本設定</span>
+          </a></li>
+    </ul>
+  </li>
+
+  <li>
+    <h2><span class="en">Best Practices</span>
+               <span class="de" style="display:none">Bewährte Verfahren</span>
+               <span class="es" style="display:none">Prácticas recomendadas</span>
+               <span class="fr" style="display:none">Meilleures pratiques</span>
+               <span class="it" style="display:none">Best practice</span>
+               <span class="ja" style="display:none">ベスト プラクティス</span>
+               <span class="zh-CN" style="display:none">最佳实践</span>
+               <span class="zh-TW" style="display:none">最佳實務</span>
+    </h2>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screens-support-1.5.html">
+            <span class="en">Strategies for Android 1.5</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a> <span class="new">new!</span></li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a> <span class="new-child">updated</span></div>
+        <ul>
+          <li class="toggle-list">
+            <div><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a> <span class="new">updated</span></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a> <span class="new">updated</span></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a> <span class="new">new!</span></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a> <span class="new">updated</span></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a> <span class="new">updated</span></li>
+          <li><a href="../../../guide/practices/ui_guidelines/activity_task_design.html">
+                <span class="en">Activity and Task Design</span>
+              </a></li>
+          <li><a href="../../../guide/practices/ui_guidelines/menu_design.html">
+                <span class="en">Menu Design</span>
+              </a></li>
+        </ul>
+      </li>
+      </ul>
+      <ul>
+      <li><a href="../../../guide/practices/design/accessibility.html">
+            <span class="en">Designing for Accessibility</span>
+          </a></li>
+      <li class="toggle-list">
+        <div><a href="../../../guide/practices/design/performance.html">
+            <span class="en">Designing for Performance</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/design/jni.html">
+                <span class="en">JNI Tips</span>
+              </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/design/responsiveness.html">
+            <span class="en">Designing for Responsiveness</span>
+          </a></li>
+      <li><a href="../../../guide/practices/design/seamlessness.html">
+            <span class="en">Designing for Seamlessness</span>
+          </a></li>
+      <li><a href="../../../guide/practices/security.html">
+            <span class="en">Designing for Security</span></a>
+            <span class="new">new!</span><!-- 11/7/10 -->
+          </li>
+    </ul>
+  </li>
+
+  <li>
+    <h2><span class="en">Web Applications</span>
+    </h2>
+    <ul>
+      <li><a href="../../../guide/webapps/index.html">
+            <span class="en">Web Apps Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li>
+
+  <li>
+    <h2><span class="en">Appendix</span>
+               <span class="de" style="display:none">Anhang</span>
+               <span class="es" style="display:none">Apéndice</span>
+               <span class="fr" style="display:none">Annexes</span>
+               <span class="it" style="display:none">Appendice</span>
+               <span class="ja" style="display:none">付録</span>
+               <span class="zh-CN" style="display:none">附录</span>
+               <span class="zh-TW" style="display:none">附錄</span>
+    </h2>
+    <ul>
+      <li><a href="../../../guide/appendix/api-levels.html">
+            <span class="en">Android API Levels</span>
+          </a></li>
+      <li><a href="../../../guide/appendix/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      <li><a href="../../../guide/appendix/media-formats.html">
+            <span class="en">Supported Media Formats</span>
+          </a> <span class="new">updated</span></li>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+      <li><a href="../../../guide/developing/tools/aidl.html">AIDL</a></li>
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</ul>
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      addLoadEvent(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="g-unit" id="doc-content"><a name="top"></a>
+
+<div id="jd-header" class="guide-header">
+  <span class="crumb">
+    &nbsp;
+    
+  </span>
+<h1>Content Providers</h1>
+</div>
+
+  
+  <div id="jd-content">
+ 
+    
+
+
+    <div class="jd-descr">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>In this document</h2>
+<ol>
+<li><a href="#basics">Content provider basics</a></li>
+<li><a href="#querying">Querying a content provider</a></li>
+<li><a href="#modifying">Modifying data in a provider</a></li>
+<li><a href="#creating">Creating a content provider</a></li>
+<li><a href="#urisum">Content URI summary</a></li>
+</ol>
+
+<h2>Key classes</h2>
+<ol>
+<li><code><a href="../../../reference/android/content/ContentProvider.html">ContentProvider</a></code></li>
+<li><code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code></li>
+<li><code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code></li>
+</ol>
+
+<h2>See also</h2>
+<ol>
+  <li><a href="../../../guide/topics/providers/calendar-provider.html">Calendar Provider</a></li>
+</ol>
+</div>
+</div>
+
+<p>
+Content providers store and retrieve data and make it accessible to all 
+applications.  They're the only way to share data across applications; there's 
+no common storage area that all Android packages can access.
+</p>   
+
+<p>
+Android ships with a number of content providers for common data types 
+(audio, video, images, personal contact information, and so on).  You can 
+see some of them listed in the <code><a href="../../../reference/android/provider/package-summary.html">android.provider</a></code> 
+package.  You can query these providers for the data they contain (although,
+for some, you must acquire the proper permission to read the data).
+</p>   
+
+<p class="note"><strong>Note:</strong> Android 4.0 introduces the Calendar
+Provider. For more information, see <a
+href="../../../guide/topics/providers/calendar-provider.html">Calendar
+Provider</a>.</p>
+<p>
+If you want to make your own data public, you have two options:  You can 
+create your own content provider (a <code><a href="../../../reference/android/content/ContentProvider.html">ContentProvider</a></code> 
+subclass) or you can add the data to an existing provider &mdash; if there's 
+one that controls the same type of data and you have permission to write to it. 
+</p>   
+
+<p>
+This document is an introduction to using content providers.  After a 
+brief discussion of the fundamentals, it explores how to query a content 
+provider, how to modify data controlled by a provider, and how to create
+a content provider of your own.
+</p>   
+
+
+<h2><a name="basics"></a>Content Provider Basics</h2>
+
+<p>
+How a content provider actually stores its data under the covers is 
+up to its designer.  But all content providers implement a common interface 
+for querying the provider and returning results &mdash; as well as for 
+adding, altering, and deleting data.
+</p>   
+
+<p>
+It's an interface that clients use indirectly, most generally through 
+<code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code> objects.  You get a ContentResolver 
+by calling <code><code><a href="../../../reference/android/content/Context.html#getContentResolver()">getContentResolver()</a></code></code> from within the implementation of an Activity 
+or other application component:
+</p>   
+
+<pre>ContentResolver cr = getContentResolver();</pre>
+
+<p>
+You can then use the ContentResolver's methods to interact with whatever 
+content providers you're interested in.
+</p>   
+
+<p>
+When a query is initiated, the Android system identifies the content provider 
+that's the target of the query and makes sure that it is up and running.  
+The system instantiates all ContentProvider objects; you never need to do it 
+on your own.  In fact, you never deal directly with ContentProvider objects 
+at all.  Typically, there's just a single instance of each type of 
+ContentProvider.  But it can communicate with multiple ContentResolver objects 
+in different applications and processes.  The interaction between processes is 
+handled by the ContentResolver and ContentProvider classes.
+</p>   
+
+
+<h3>The data model</h3>
+
+<p>
+Content providers expose their data as a simple table on a database model, 
+where each row is a record and each column is data of a particular type 
+and meaning.  For example, information about people and their phone numbers 
+might be exposed as follows: 
+</p>   
+
+<table>
+   <tr>
+      <th scope="col">_ID</th>
+      <th scope="col">NUMBER</th>
+      <th scope="col">NUMBER_KEY</th>
+      <th scope="col">LABEL</th>
+      <th scope="col">NAME</th>
+      <th scope="col">TYPE</th>
+   </tr>
+   <tr>
+      <td>13</td>
+      <td>(425) 555 6677</td>
+      <td>425 555 6677</td>
+      <td>Kirkland office</td>
+      <td>Bully Pulpit</td>
+      <td><code>TYPE_WORK</code></td>
+   </tr>
+   <tr>
+      <td>44</td>
+      <td>(212) 555-1234</td>
+      <td>212 555 1234</td>
+      <td>NY apartment</td>
+      <td>Alan Vain</td>
+      <td><code>TYPE_HOME</code></td>
+   </tr>
+   <tr>
+      <td>45</td>
+      <td>(212) 555-6657</td>
+      <td>212 555 6657</td>
+      <td>Downtown office</td>
+      <td>Alan Vain</td>
+      <td><code>TYPE_MOBILE</code></td>
+   </tr>
+   <tr>
+      <td>53</td>
+      <td>201.555.4433</td>
+      <td>201 555 4433</td>
+      <td>Love Nest</td>
+      <td>Rex Cars</td>
+      <td><code>TYPE_HOME</code></td>
+   </tr>
+</table>
+
+<p>
+Every record includes a numeric <code>_ID</code> field that uniquely identifies 
+the record within the table.  IDs can be used to match records in related 
+tables &mdash; for example, to find a person's phone number in one table 
+and pictures of that person in another.
+</p>   
+
+<p>
+A query returns a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> object that can move from 
+record to record and column to column to read the contents of each field.  
+It has specialized methods for reading each type of data.  So, to read a field, 
+you must know what type of data the field contains.  (There's more on query 
+results and Cursor objects later.)
+</p>   
+
+
+<h3><a name="uri"></a>URIs</h3>
+
+<p>
+Each content provider exposes a public URI (wrapped as a <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> 
+object) that uniquely identifies its data set.  A content provider that controls 
+multiple data sets (multiple tables) exposes a separate URI for each one.  All 
+URIs for providers begin with the string "<code>content://</code>".  The <code>content:</code> 
+scheme identifies the data as being controlled by a content provider.
+</p>   
+
+<p>
+If you're defining a content provider, it's a good idea to also define a 
+constant for its URI, to simplify client code and make future updates cleaner.  
+Android defines <code>CONTENT_URI</code> constants for all the providers that come 
+with the platform.  For example, the URI for the table that matches 
+phone numbers to people and the URI for the table that holds pictures of 
+people (both controlled by the Contacts content provider) are:
+</p>   
+
+<p>
+<p style="margin-left: 2em"><code>android.provider.Contacts.Phones.CONTENT_URI</code>
+<br/><code>android.provider.Contacts.Photos.CONTENT_URI</code>
+</p>
+
+<p>
+The URI constant is used in all interactions with the content provider. 
+Every <code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code> method takes the URI 
+as its first argument.  It's what identifies which provider the ContentResolver 
+should talk to and which table of the provider is being targeted.
+</p>   
+
+
+<h2><a name="querying"></a>Querying a Content Provider</h2>
+
+<p>
+You need three pieces of information to query a content provider:
+</p>   
+
+<ul>
+<li>The URI that identifies the provider</li>
+<li>The names of the data fields you want to receive</li>
+<li>The data types for those fields</li>
+</ul>
+
+<p>
+If you're querying a particular record, you also need the ID for that record.
+</p>   
+
+
+<h3>Making the query</h3>
+
+<p>
+To query a content provider, you can use either the 
+<code><code><a href="../../../reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">ContentResolver.query()</a></code></code> 
+method or the <code><code><a href="../../../reference/android/app/Activity.html#managedQuery(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">Activity.managedQuery()</a></code></code> method. 
+Both methods take the same set of arguments, and both return a 
+Cursor object.  However, <code>managedQuery()</code> 
+causes the activity to manage the life cycle of the Cursor.  A managed Cursor 
+handles all of the niceties, such as unloading itself when the activity pauses, 
+and requerying itself when the activity restarts.  You can ask an Activity to 
+begin managing an unmanaged Cursor object for you by calling 
+<code><code><a href="../../../reference/android/app/Activity.html#startManagingCursor(android.database.Cursor)">Activity.startManagingCursor()</a></code></code>. 
+</p>   
+
+<p>
+The first argument to either <code><code><a href="../../../reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code></code> 
+or <code><code><a href="../../../reference/android/app/Activity.html#managedQuery(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">managedQuery()</a></code></code> is the provider URI 
+&mdash; the <code>CONTENT_URI</code> constant that identifies a particular 
+ContentProvider and data set (see <a href="#uri">URIs</a> earlier).
+</p>   
+
+<p>
+To restrict a query to just one record, you can append the <code>_ID</code> value for 
+that record to the URI &mdash; that is, place a string matching the ID as the 
+last segment of the path part of the URI.  For example, if the ID is 23, 
+the URI would be:
+</p>   
+
+<p style="margin-left: 2em"><code>content://. . . ./23</code></p>   
+
+<p>
+There are some helper methods, particularly 
+<code><code><a href="../../../reference/android/content/ContentUris.html#withAppendedId(android.net.Uri, long)">ContentUris.withAppendedId()</a></code></code> and <code><code><a href="../../../reference/android/net/Uri.html#withAppendedPath(android.net.Uri, java.lang.String)">Uri.withAppendedPath()</a></code></code>, 
+that make it easy to append an ID to a URI.  Both are static methods that return 
+a Uri object with the ID added.  So, for example, if you were looking for record 
+23 in the database of people contacts, you might construct a query as follows:
+</p>   
+
+<pre>
+import android.provider.Contacts.People;
+import android.content.ContentUris;
+import android.net.Uri;
+import android.database.Cursor;
+
+// Use the ContentUris method to produce the base URI for the contact with _ID == 23.
+Uri myPerson = ContentUris.withAppendedId(People.CONTENT_URI, 23);
+
+// Alternatively, use the Uri method to produce the base URI.
+// It takes a string rather than an integer.
+Uri myPerson = Uri.withAppendedPath(People.CONTENT_URI, "23");
+
+// Then query for this specific record:
+Cursor cur = managedQuery(myPerson, null, null, null, null);
+</pre>
+
+<p>
+The other arguments to the <code><code><a href="../../../reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code></code> 
+and <code><code><a href="../../../reference/android/app/Activity.html#managedQuery(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">managedQuery()</a></code></code> methods delimit 
+the query in more detail.  They are:
+</p>   
+
+<ul>
+<li>The names of the data columns that should be returned.  A <code>null</code> 
+value returns all columns.  Otherwise, only columns that are listed by name
+are returned.  All the content providers that come with the platform define 
+constants for their columns.  For example, the 
+<code><a href="../../../reference/android/provider/Contacts.Phones.html">android.provider.Contacts.Phones</a></code> class 
+defines constants for the names of the columns in the phone table illustrated 
+earlier &mdash; <code>_ID</code>, <code>NUMBER</code>, <code>NUMBER_KEY</code>, <code>NAME</code>,
+and so on.</li>
+
+<li><p>A filter detailing which rows to return, formatted as an SQL <code>WHERE</code> 
+clause (excluding the <code>WHERE</code> itself).  A <code>null</code> value returns 
+all rows (unless the URI limits the query to a single record).</p></li>
+
+<li><p>Selection arguments.</p></li>
+
+<li><p>A sorting order for the rows that are returned, formatted as an SQL 
+<code>ORDER BY</code> clause (excluding the <code>ORDER BY</code> itself).  A <code>null</code> 
+value returns the records in the default order for the table, which may be
+unordered.</p></li>  
+</ul>
+
+<p>
+Let's look at an example query to retrieve a list of contact names and their 
+primary phone numbers:
+</p>
+
+<pre>
+import android.provider.Contacts.People;
+import android.database.Cursor;
+
+// Form an array specifying which columns to return. 
+String[] projection = new String[] {
+                             People._ID,
+                             People._COUNT,
+                             People.NAME,
+                             People.NUMBER
+                          };
+
+// Get the base URI for the People table in the Contacts content provider.
+Uri contacts =  People.CONTENT_URI;
+
+// Make the query. 
+Cursor managedCursor = managedQuery(contacts,
+                         projection, // Which columns to return 
+                         null,       // Which rows to return (all rows)
+                         null,       // Selection arguments (none)
+                         // Put the results in ascending order by name
+                         People.NAME + " ASC");
+</pre>
+
+<p>
+This query retrieves data from the People table of the Contacts content 
+provider.  It gets the name, primary phone number, and unique record ID for
+each contact.  It also reports the number of records that are returned as 
+the <code>_COUNT</code> field of each record.
+</p>
+
+<p>
+The constants for the names of the columns are defined in various interfaces 
+&mdash; <code>_ID</code> and <code>_COUNT</code> in 
+<code><a href="../../../reference/android/provider/BaseColumns.html">BaseColumns</a></code>, <code>NAME</code> in <code><a href="../../../reference/android/provider/Contacts.PeopleColumns.html">PeopleColumns</a></code>, and <code>NUMBER</code> 
+in <code><a href="../../../reference/android/provider/Contacts.PhonesColumns.html">PhoneColumns</a></code>.  The 
+<code><a href="../../../reference/android/provider/Contacts.People.html">Contacts.People</a></code> class implements 
+each of these interfaces, which is why the code example above could refer 
+to them using just the class name. 
+</p>
+
+
+<h3>What a query returns</h3>
+
+<p>
+A query returns a set of zero or more database records.  The names of the 
+columns, their default order, and their data types are specific to each 
+content provider. 
+But every provider has an <code>_ID</code> column, which holds a unique numeric 
+ID for each record.  Every provider can also report the number
+of records returned as the <code>_COUNT</code> column; its value 
+is the same for all rows. 
+</p>
+
+<p> 
+Here is an example result set for the query in the previous section:
+</p>
+
+<table border="1">
+   <tbody>
+      <tr>
+         <th scope="col">_ID</th>
+         <th scope="col">_COUNT</th>
+         <th scope="col">NAME</th>
+         <th scope="col">NUMBER</th>     
+      </tr>
+      <tr>
+         <td>44</td>
+         <td>3</td>
+         <td>Alan Vain</td>
+         <td>212 555 1234</td>   
+      </tr>
+      <tr>
+         <td>13</td>
+         <td>3</td>
+         <td>Bully Pulpit</td>
+         <td>425 555 6677</td>   
+      </tr>
+      <tr>
+         <td>53</td>
+         <td>3</td>
+         <td>Rex Cars</td>
+         <td>201 555 4433</td>
+      </tr>
+   </tbody>
+</table>
+
+<p>
+The retrieved data is exposed by a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> 
+object that can be used to iterate backward or forward through the result 
+set.  You can use this object only to read the data.  To add, modify, or 
+delete data, you must use a ContentResolver object.
+</p>
+
+
+<h3>Reading retrieved data</h3>
+
+<p>
+The Cursor object returned by a query provides access to a recordset of
+results.  If you have queried for a specific record by ID, this set will
+contain only one value.  Otherwise, it can contain multiple values.  
+(If there are no matches, it can also be empty.)  You 
+can read data from specific fields in the record, but you must know the 
+data type of the field, because the Cursor object has a separate method
+for reading each type of data &mdash; such as <code><code><a href="../../../reference/android/database/Cursor.html#getString(int)">getString()</a></code></code>, <code><code><a href="../../../reference/android/database/Cursor.html#getInt(int)">getInt()</a></code></code>, and <code><code><a href="../../../reference/android/database/Cursor.html#getFloat(int)">getFloat()</a></code></code>.  
+(However, for most types, if you call the method for reading strings, 
+the Cursor object will give you the String representation of the data.)  
+The Cursor lets you request the column name from the index of the column, 
+or the index number from the column name.
+</p>
+
+<p>
+The following snippet demonstrates reading names and phone numbers from
+the query illustrated earlier:
+</p>
+
+<pre>
+import android.provider.Contacts.People;
+
+private void getColumnData(Cursor cur){ 
+    if (cur.moveToFirst()) {
+
+        String name; 
+        String phoneNumber; 
+        int nameColumn = cur.getColumnIndex(People.NAME); 
+        int phoneColumn = cur.getColumnIndex(People.NUMBER);
+        String imagePath; 
+    
+        do {
+            // Get the field values
+            name = cur.getString(nameColumn);
+            phoneNumber = cur.getString(phoneColumn);
+           
+	    // Do something with the values. 
+            ... 
+
+        } while (cur.moveToNext());
+
+    }
+}
+</pre>
+
+<p>
+If a query can return binary data, such as an image or sound, the data 
+may be directly entered in the table or the table entry for that data may be
+a string specifying a <code>content:</code> URI that you can use to get the data.  
+In general, smaller amounts of data (say, from 20 to 50K or less) are most often 
+directly entered in the table and can be read by calling 
+<code><code><a href="../../../reference/android/database/Cursor.html#getBlob(int)">Cursor.getBlob()</a></code></code>.  
+It returns a byte array.
+</p>
+  
+<p>
+If the table entry is a <code>content:</code> URI, you should never try to open 
+and read the file directly (for one thing, permissions problems can make this 
+fail).  Instead, you should call 
+<code><code><a href="../../../reference/android/content/ContentResolver.html#openInputStream(android.net.Uri)">ContentResolver.openInputStream()</a></code></code> to get an 
+<code><a href="../../../reference/java/io/InputStream.html">InputStream</a></code> object that you can use to read the data.  
+</p>
+
+
+<h2><a name="modifying"></a>Modifying Data</h2>
+
+<p>
+Data kept by a content provider can be modified by:
+</p>
+
+<ul>
+<p><li>Adding new records</li>
+<li>Adding new values to existing records</li>
+<li>Batch updating existing records</li>
+<li>Deleting records</li>
+</ul>
+
+<p>
+All data modification is accomplished using <code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code>
+methods.  Some content providers require a more restrictive permission for writing
+data than they do for reading it.  If you don't have permission to write to a 
+content provider, the ContentResolver methods will fail.
+</p>
+
+
+<h3>Adding records</h3>
+
+<p>
+To add a new record to a content provider, first set up a map of key-value pairs 
+in a <code><a href="../../../reference/android/content/ContentValues.html">ContentValues</a></code> object, where each key matches 
+the name of a column in the content provider and the value is the desired 
+value for the new record in that column.  Then call <code><code><a href="../../../reference/android/content/ContentResolver.html#insert(android.net.Uri, android.content.ContentValues)">ContentResolver.insert()</a></code></code> and pass 
+it the URI of the provider and the ContentValues map.  This method returns 
+the full URI of the new record &mdash; that is, the provider's URI with 
+the appended ID for the new record.  You can then use this URI to query and 
+get a Cursor over the new record, and to further modify the record.  
+Here's an example:
+</p>
+
+<pre>
+import android.provider.Contacts.People;
+import android.content.ContentResolver;
+import android.content.ContentValues; 
+
+ContentValues values = new ContentValues();
+
+// Add Abraham Lincoln to contacts and make him a favorite.
+values.put(People.NAME, "Abraham Lincoln");
+// 1 = the new contact is added to favorites
+// 0 = the new contact is not added to favorites
+values.put(People.STARRED, 1);
+
+Uri uri = getContentResolver().insert(People.CONTENT_URI, values);
+</pre>
+
+
+<h3>Adding new values</h3>
+
+<p>
+Once a record exists, you can add new information to it or modify 
+existing information.  For example, the next step in the example above would 
+be to add contact information &mdash; like a phone number or an IM or e-mail 
+address &mdash; to the new entry.  
+</p>
+
+<p>
+The best way to add to a record in the Contacts database is to append 
+the name of the table where the new data goes to the URI for the 
+record, then use the amended URI to add the new data values.  Each
+Contacts table exposes a name for this purpose as a <code>CONTENT_DIRECTORY</code> constant.  The following code continues the previous 
+example by adding a phone number and e-mail address for the record
+just created:
+</p>
+
+<pre>
+Uri phoneUri = null;
+Uri emailUri = null;
+
+// Add a phone number for Abraham Lincoln.  Begin with the URI for
+// the new record just returned by insert(); it ends with the _ID
+// of the new record, so we don't have to add the ID ourselves.
+// Then append the designation for the phone table to this URI,
+// and use the resulting URI to insert the phone number.
+phoneUri = Uri.withAppendedPath(uri, People.Phones.CONTENT_DIRECTORY);
+
+values.clear();
+values.put(People.Phones.TYPE, People.Phones.TYPE_MOBILE);
+values.put(People.Phones.NUMBER, "1233214567");
+getContentResolver().insert(phoneUri, values);
+
+// Now add an email address in the same way.
+emailUri = Uri.withAppendedPath(uri, People.ContactMethods.CONTENT_DIRECTORY);
+
+values.clear();
+// ContactMethods.KIND is used to distinguish different kinds of
+// contact methods, such as email, IM, etc. 
+values.put(People.ContactMethods.KIND, Contacts.KIND_EMAIL);
+values.put(People.ContactMethods.DATA, "test@example.com");
+values.put(People.ContactMethods.TYPE, People.ContactMethods.TYPE_HOME);
+getContentResolver().insert(emailUri, values);   
+</pre>
+
+<p>
+You can place small amounts of binary data into a table by calling 
+the version of <code><code><a href="../../../reference/android/content/ContentValues.html#put(java.lang.String, byte[])">ContentValues.put()</a></code></code> that takes a byte array.  
+That would work for a small icon-like image or a short audio clip, for example.  
+However, if you have a large amount of binary data to add, such as a photograph
+or a complete song, put a <code>content:</code> URI for the data in the table and call
+<code><code><a href="../../../reference/android/content/ContentResolver.html#openOutputStream(android.net.Uri)">ContentResolver.openOutputStream()</a></code></code> 
+with the file's URI.  (That causes the content provider to store the data 
+in a file and record the file path in a hidden field of the record.)
+</p>
+
+<p>
+In this regard, the <code><a href="../../../reference/android/provider/MediaStore.html">MediaStore</a></code> content 
+provider, the main provider that dispenses image, audio, and video 
+data, employs a special convention:  The same URI that is used with 
+<code>query()</code> or <code>managedQuery()</code> to get meta-information 
+about the binary data (such as, the caption of a photograph or the
+date it was taken) is used with <code>openInputStream()</code> 
+to get the data itself.  Similarly, the same URI that is used with
+<code>insert()</code> to put meta-information into a MediaStore record 
+is used with <code>openOutputStream()</code> to place the binary data there.
+The following code snippet illustrates this convention:
+</p>
+
+<pre>
+import android.provider.MediaStore.Images.Media;
+import android.content.ContentValues;
+import java.io.OutputStream;
+
+// Save the name and description of an image in a ContentValues map.  
+ContentValues values = new ContentValues(3);
+values.put(Media.DISPLAY_NAME, "road_trip_1");
+values.put(Media.DESCRIPTION, "Day 1, trip to Los Angeles");
+values.put(Media.MIME_TYPE, "image/jpeg");
+
+// Add a new record without the bitmap, but with the values just set.
+// insert() returns the URI of the new record.
+Uri uri = getContentResolver().insert(Media.EXTERNAL_CONTENT_URI, values);
+
+// Now get a handle to the file for that record, and save the data into it.
+// Here, sourceBitmap is a Bitmap object representing the file to save to the database.
+try {
+    OutputStream outStream = getContentResolver().openOutputStream(uri);
+    sourceBitmap.compress(Bitmap.CompressFormat.JPEG, 50, outStream);
+    outStream.close();
+} catch (Exception e) {
+    Log.e(TAG, "exception while writing image", e);
+}
+</pre>
+
+
+<h3>Batch updating records</h3>
+
+<p>
+To batch update a group of records (for example, to change "NY" to "New York" 
+in all fields), call the <code><code><a href="../../../reference/android/content/ContentResolver.html#update(android.net.Uri, android.content.ContentValues, java.lang.String, java.lang.String[])">ContentResolver.update()</a></code></code> 
+method with the columns and values to change.
+</p>
+
+
+<h3><a name="deletingrecord"></a>Deleting a record</h3>
+
+<p>
+To delete a single record, call {<code><code><a href="../../../reference/android/content/ContentResolver.html#delete(android.net.Uri, java.lang.String, java.lang.String[])">ContentResolver.delete()</a></code></code> 
+with the URI of a specific row.
+</p>
+
+<p>
+To delete multiple rows, call <code><code><a href="../../../reference/android/content/ContentResolver.html#delete(android.net.Uri, java.lang.String, java.lang.String[])">ContentResolver.delete()</a></code></code> 
+with the URI of the type of record to delete (for example, <code>android.provider.Contacts.People.CONTENT_URI</code>) and an SQL <code>WHERE</code> 
+clause defining which rows to delete.  (<i><b>Caution</b>: 
+Be sure to include a valid <code>WHERE</code> clause if you're deleting a general 
+type, or you risk deleting more records than you intended!</i>).
+</p>
+
+
+<h2><a name="creating"></a>Creating a Content Provider</h2>
+
+<p>
+To create a content provider, you must:
+</p>
+
+<ul>
+<li>Set up a system for storing the data.  Most content providers 
+store their data using Android's file storage methods or SQLite databases, 
+but you can store your data any way you want.  Android provides the
+<code><a href="../../../reference/android/database/sqlite/SQLiteOpenHelper.html">SQLiteOpenHelper</a></code>
+class to help you create a database and <code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a></code> to manage it.</li>
+
+<li><p>Extend the <code><a href="../../../reference/android/content/ContentProvider.html">ContentProvider</a></code> class to provide 
+access to the data.</p></li>
+
+<li><p>Declare the content provider in the manifest file for your 
+application (AndroidManifest.xml).</p></li>
+</ul>
+
+<p>
+The following sections have notes on the last two of these tasks.
+</p>
+
+
+<h3>Extending the ContentProvider class</h3>
+
+<p>
+You define a <code><a href="../../../reference/android/content/ContentProvider.html">ContentProvider</a></code> subclass to 
+expose your data to others using the conventions expected by 
+ContentResolver and Cursor objects.  Principally, this means 
+implementing six abstract methods declared in the ContentProvider class:
+</p>
+
+<p style="margin-left: 2em"><code>query()</code>
+<br/><code>insert()</code>
+<br/><code>update()</code>
+<br/><code>delete()</code>
+<br/><code>getType()</code>
+<br/><code>onCreate()</code></p>
+
+<p>
+The <code>query()</code> method must return a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> object 
+that can iterate over the requested data.  Cursor itself is an interface, but
+Android provides some ready-made Cursor objects that you can use.  For example,
+<code><a href="../../../reference/android/database/sqlite/SQLiteCursor.html">SQLiteCursor</a></code> can iterate over data stored in
+an SQLite database.  You get the Cursor object by calling any of the <code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a></code> class's <code>query()</code>
+methods.  There are other Cursor implementations &mdash; such as <code><a href="../../../reference/android/database/MatrixCursor.html">MatrixCursor</a></code> &mdash; for data not stored in a database.
+</p>
+
+<p>
+Because these ContentProvider methods can be called from 
+various ContentResolver objects in different processes and threads, 
+they must be implemented in a thread-safe manner. 
+</p>
+
+<p>
+As a courtesy, you might also want to call <code><code><a href="../../../reference/android/content/ContentResolver.html#notifyChange(android.net.Uri, android.database.ContentObserver)">ContentResolver.notifyChange()</a></code></code> to notify listeners when there are 
+modifications to the data. 
+</p>
+
+<p>
+Beyond defining the subclass itself, there are other steps you should take
+to simplify the work of clients and make the class more accessible: 
+</p>
+
+<ul>
+<li>Define a <code>public static final</code> <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> 
+named <code>CONTENT_URI</code>.  This is the string that represents the full 
+<code>content:</code> URI that your content provider handles.  You must define a 
+unique string for this value.  The best solution is to use the fully-qualified 
+class name of the content provider (made lowercase).  So, for example, the 
+URI for a TransportationProvider class could be defined as follows:
+
+<pre>public static final Uri CONTENT_URI = 
+               Uri.parse("content://com.example.codelab.transportationprovider");</pre>
+
+<p>
+If the provider has subtables, also define <code>CONTENT_URI</code> constants for
+each of the subtables.  These URIs should all have the same authority (since
+that identifies the content provider), and be distinguished only by their paths. 
+For example:
+</p>
+
+<p style="margin-left: 2em"><code>content://com.example.codelab.transportationprovider/train</code> 
+<br/><code>content://com.example.codelab.transportationprovider/air/domestic</code>
+<br/><code>content://com.example.codelab.transportationprovider/air/international</code></p>
+
+<p>
+For an overview of <code>content:</code> URIs, see the <a href="#urisum">Content URI 
+Summary</a> at the end of this document.
+</p></li>
+
+<li><p>Define the column names that the content provider will return to clients. 
+If you are using an underlying database, these column names are typically 
+identical to the SQL database column names they represent.  Also define
+<code>public static</code> String constants that clients can use to specify 
+the columns in queries and other instructions.
+</p>
+
+<p>
+Be sure to include an integer column named "<code>_id</code>" 
+(with the constant <code>_ID</code>) for 
+the IDs of the records.  You should have this field whether or not you have 
+another field (such as a URL) that is also unique among all records.  If 
+you're using the SQLite database, the <code>_ID</code> field should be the 
+following type:
+</p>
+
+<p style="margin-left: 2em"><code>INTEGER PRIMARY KEY AUTOINCREMENT</code></p>
+
+<p>
+The <code>AUTOINCREMENT</code> descriptor is optional.  But without it, SQLite
+increments an ID counter field to the next number above the largest
+existing number in the column.  If you delete the last row, the next row added
+will have the same ID as the deleted row.  <code>AUTOINCREMENT</code> avoids this 
+by having SQLite increment to the next largest value whether deleted or not.
+</p>
+</li>
+
+<li><p>Carefully document the data type of each column.  Clients need this
+information to read the data.</p></li>
+
+<li><p>If you are handling a new data type, you must define a new MIME type 
+to return in your implementation of <code><code><a href="../../../reference/android/content/ContentProvider.html#getType(android.net.Uri)">ContentProvider.getType()</a></code></code>.  
+The type depends in part on whether or not the <code>content:</code> URI submitted 
+to <code>getType()</code> limits the request to a specific record.  There's one 
+form of the MIME type for a single record and another for multiple records.  
+Use the <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> methods to help determine what is being 
+requested.  Here is the general format for each type:</p></li>
+
+<ul>
+<li><p>For a single record:&nbsp;&nbsp;&nbsp; <code>vnd.android.cursor.item/vnd.<em>yourcompanyname.contenttype</em></code></p>
+
+<p>For example, a request for train record 122, like this URI,</p>
+<p style="margin-left: 2em"><code>content://com.example.transportationprovider/trains/122</code></p>
+
+<p>might return this MIME type:</p>
+<p style="margin-left: 2em"><code>vnd.android.cursor.item/vnd.example.rail</code></p>
+</li>
+
+<li><p>For multiple records:&nbsp;&nbsp;&nbsp; <code>vnd.android.cursor.dir/vnd.<em>yourcompanyname.contenttype</em></code></p>
+
+<p>For example, a request for all train records, like the following URI,</p>
+<p style="margin-left: 2em"><code>content://com.example.transportationprovider/trains</code></p>
+
+<p>might return this MIME type:</p>
+<p style="margin-left: 2em"><code>vnd.android.cursor.dir/vnd.example.rail</code></p>
+</li>
+</ul>
+
+<li><p>If you are exposing byte data that's too big to put in the table itself
+&mdash; such as a large bitmap file &mdash; the field that exposes the
+data to clients should actually contain a <code>content:</code> URI string.
+This is the field that gives clients access to the data file.  The record 
+should also have another field, named "<code>_data</code>" that lists the exact file 
+path on the device for that file.  This field is not intended to be read by 
+the client, but by the ContentResolver.  The client will call <code><code><a href="../../../reference/android/content/ContentResolver.html#openInputStream(android.net.Uri)">ContentResolver.openInputStream()</a></code></code> 
+on the user-facing field holding the URI for the item.  The ContentResolver 
+will request the "<code>_data</code>" field for that record, and because
+it has higher permissions than a client, it should be able to access
+that file directly and return a read wrapper for the file to the client.</p></li>
+
+</ul>
+
+<p>
+For an example of a private content provider implementation, see the 
+NodePadProvider class in the Notepad sample application that ships with the SDK.
+</p>
+
+
+<h3>Declaring the content provider</h3>
+
+<p>
+To let the Android system know about the content provider you've developed, 
+declare it with a <code>&lt;provider&gt;</code> element in the application's 
+AndroidManifest.xml file.  Content providers that are not declared in the
+manifest are not visible to the Android system
+</p>
+
+<p>
+The <code>name</code> attribute is the fully qualified name of the ContentProvider
+subclass.  The <code>authorities</code> attribute is the authority part of the 
+<code>content:</code> URI that identifies the provider.
+For example if the ContentProvider subclass is AutoInfoProvider, the 
+<code>&lt;provider&gt;</code> element might look like this:
+</p>
+
+<pre>
+&lt;provider android:name="com.example.autos.AutoInfoProvider"
+          android:authorities="com.example.autos.autoinfoprovider" 
+          . . . /&gt
+&lt;/provider&gt;
+</pre>
+
+<p>
+Note that the <code>authorities</code> attribute omits the path part of a 
+<code>content:</code> URI.  For example, if AutoInfoProvider controlled subtables
+for different types of autos or different manufacturers,
+</p>
+
+<p style="margin-left: 2em"><code>content://com.example.autos.autoinfoprovider/honda</code>
+<br/><code>content://com.example.autos.autoinfoprovider/gm/compact</code>
+<br/><code>content://com.example.autos.autoinfoprovider/gm/suv</code></p>
+
+<p>
+those paths would not be declared in the manifest.  The authority is what 
+identifies the provider, not the path; your provider can interpret the path 
+part of the URI in any way you choose.
+</p>
+
+<p>
+Other <code>&lt;provider&gt;</code> attributes can set permissions to read and 
+write data, provide for an icon and text that can be displayed to users, 
+enable and disable the provider, and so on.  Set the <code>multiprocess</code> 
+attribute to "<code>true</code>" if data does not need to be synchronized between 
+multiple running versions of the content provider.  This permits an instance 
+of the provider to be created in each client process, eliminating the need 
+to perform IPC. 
+</p>
+
+
+<h2><a name="urisum"></a>Content URI Summary</h2>
+
+<p>
+Here is a recap of the important parts of a content URI:
+</p>
+
+<p>
+<img src="../../../images/content_uri.png" alt="Elements of a content URI" 
+height="80" width="528">
+</p>
+
+<ol type="A">
+<li>Standard prefix indicating that the data is controlled by a
+content provider. It's never modified.</li>
+
+<li><p>The authority part of the URI; it identifies the content provider. 
+For third-party applications, this should be a fully-qualified class name 
+(reduced to lowercase) to ensure uniqueness.  The authority is declared in 
+the <code>&lt;provider&gt;</code> element's <code>authorities</code> attribute:</p>
+
+<pre>&lt;provider android:name=".TransportationProvider"
+          android:authorities="com.example.transportationprovider"
+          . . .  &gt;</pre></li>
+
+<li><p>The path that the content provider uses to determine what kind of data is
+being requested.  This can be zero or more segments long.  If the content provider
+exposes only one type of data (only trains, for example), it can be absent.
+If the provider exposes several types, including subtypes, it can be several 
+segments long &mdash; for example, "<code>land/bus</code>", "<code>land/train</code>", 
+"<code>sea/ship</code>", and "<code>sea/submarine</code>" to give four possibilities.</p></li>
+
+<li><p>The ID of the specific record being requested, if any.  This is the 
+<code>_ID</code> value of the requested record.  If the request is not limited to
+a single record, this segment and the trailing slash are omitted:</p>
+
+<p style="margin-left: 2em"><code>content://com.example.transportationprovider/trains</code></p>
+</li>
+</ol>
+
+
+
+    </div>
+
+    
+    
+    <a href="#top" style="float:right">&uarr; Go to top</a>
+    
+
+  </div> <!-- end jd-content -->
+
+<div id="footer">
+
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+  Android 4.0&nbsp;r1 - 02 Mar 2012 20:41
+
+  </div>
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="http://www.android.com/terms.html">Site Terms of Service</a> -
+    <a href="http://www.android.com/privacy.html">Privacy Policy</a> -
+    <a href="http://www.android.com/branding.html">Brand Guidelines</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize android-developer-docs.js */
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5831155-1");
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>
+
+
+
